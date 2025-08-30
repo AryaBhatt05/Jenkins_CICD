@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "A simple Node.js app with Jenkins CI/CD pipeline",
   "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "test": "jest"
-  },
+"scripts": {
+  "start": "node server.js",
+  "test": "jest",
+  "build": "echo 'Build step (nothing to compile for Node.js app)'"
+},
   "keywords": [],
   "author": "Arya Bhatt",
   "license": "ISC",

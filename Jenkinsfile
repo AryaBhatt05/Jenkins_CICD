@@ -1,8 +1,8 @@
 pipeline {
-    agent any   // run on any available Jenkins agent
+    agent any
 
     tools {
-        nodejs "NodeJS"   // Name of the NodeJS installation in Jenkins (Manage Jenkins > Global Tool Configuration)
+        nodejs "NodeJs"
     }
 
     stages {
@@ -14,36 +14,35 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'   // use 'bat' on Windows if no NodeJS plugin is configured
+                bat 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'npm test'      // runs your test suite
+                bat 'npm test'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm run build' // optional: only if you have a build script in package.json
+                bat 'npm run build'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
-                // add deployment steps here (copy files, docker, ssh, etc.)
+                echo '🚀 Deployment successful!'
             }
         }
     }
 
     post {
-        success {
-            echo '✅ Build succeeded!'
-        }
         failure {
             echo '❌ Build failed!'
+        }
+        success {
+            echo '✅ Build succeeded!'
         }
     }
 }
